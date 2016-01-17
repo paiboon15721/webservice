@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-Type" content="text/html; charset=tis-620">
+    <style>
+        @import "http://fonts.googleapis.com/css?family=Open Sans:regular,semibold,italic,italicsemibold|Inconsolata&amp;v2";
+
+        body {
+            font-family: "Open Sans";
+            margin: 6em 2em 2em 2em;
+        }
+
+        body:before {
+            content: '';
+            position: fixed;
+            top: 2%;
+            right: 3%;
+            height: 100px;
+            width: 100px;
+            background: url(http://www.html5rocks.com/static/images/identity/HTML5_Badge_128.png) no-repeat 50% 50%;
+            background-size: contain;
+            z-index: 10;
+            opacity: 0.1;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 600;
+        }
+
+        h1 {
+            position: fixed;
+            background: -webkit-linear-gradient(top, white 65%, rgba(255, 255, 255, 0));
+            background: -moz-linear-gradient(top, white 65%, rgba(255, 255, 255, 0));
+            background: -ms-linear-gradient(top, white 65%, rgba(255, 255, 255, 0));
+            background: -o-linear-gradient(top, white 65%, rgba(255, 255, 255, 0));
+            width: 100%;
+            height: 80px;
+            padding: 10px 10px 10px 1em;
+            left: 0;
+            top: 0;
+            margin: 0;
+        }
+
+        h1 img {
+            height: 30px;
+            vertical-align: middle;
+            margin-bottom: 8px;
+        }
+
+        a {
+            color: navy;
+        }
+
+        pre {
+            background: #eee;
+            margin-left: 2em;
+            padding: 5px;
+            border-left: 3px solid #ccc;
+        }
+    </style>
+    <title>Read me</title>
+</head>
+<body>
+<h1>Webservice object generator</h1>
+
+<h2>ความสามารถ</h2>
+<p>แปลง Webservice string เดิมๆ ที่คั่นด้วย | มาเป็น JSON Object</p>
+
+<h2>วิธีการใช้งาน</h2>
+<p>
+<ol>
+    <li>
+        สร้างไฟล์ json ไว้ภายใต้ path blueprints โดยมีรูปแบบดังนี้
+        <pre>
+            <code>
+                {
+                    "serviceName": "tabst",
+                    "serviceNumber": "1004",
+                    "startAt": "2",
+                    "parameters": [
+                        "flagOrder"
+                    ],
+                    "properties": [
+                        "natCode",
+                        "natDesc"
+                    ]
+                }
+            </code>
+        </pre>
+        <p>**ชื่อไฟล์จะใช้ convention เดียวกันกับการตั้งชื่อ class เช่น service ที่ใช้ดึงรายการสัญชาติ ก็จะตั้งชื่อเป็น Nationality.json</p>
+        <p>serviceName : หมายถึงชื่อ service โดยละคำว่า sdpa_ ทิ้งไป</p>
+        <p>serviceNumber : หมายถึง หมายเลข service</p>
+        <p>startAt : หมายถึง จุดเริ่มของข้อมูล (นับ pointer แบบ array)</p>
+        <p>parameters : list ของ parameters ตอนส่งไป get ข้อมูล (จำเป็นต้องใส่เรียงตาม sr)</p>
+        <p>properties : list ของ properties ตอนได้รับข้อมูลจาก service (จำเป็นต้องใส่เรียงตาม sr)</p>
+    </li>
+    <li>
+        จากนั้นไปที่ url:webservice/compile เพื่อ compile webservice
+    </li>
+    <li>
+        ไปที่ url:webservice/services/getNationality.php?flagOrder=1 เพื่อเรียกใช้งาน webservice
+    </li>
+</ol>
+</p>
+
+<hr/>
+<p>Enjoy!!</p>
+</body>
+</html>

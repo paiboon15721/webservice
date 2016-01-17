@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/classes/JSONObject.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/internal_services/compileBlueprints.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/internal_services/getBlueprint.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/internal_services/getBlueprintsAll.php" charset="UTF-8" />
+  </component>
+</project>

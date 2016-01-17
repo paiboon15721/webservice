@@ -1,0 +1,13 @@
+{
+  "serviceName": "tabst",
+  "serviceNumber": "1003",
+  "startAt": "1",
+  "parameters": [
+    "titleCode"
+  ],
+  "properties": [
+    "titlePrint",
+    "titleSex",
+    "titleEprint"
+  ]
+}

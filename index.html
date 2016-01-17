@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="webserviceApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Blueprints Management</title>
+    <link data-require="bootstrap-css@3.2.0" data-semver="3.2.0" rel="stylesheet"
+          href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="bower_components/ngprogress/ngProgress.css">
+    <script src="//code.angularjs.org/1.5.0-rc.1/angular.min.js"></script>
+    <script src="//code.angularjs.org/1.5.0-rc.1/angular-animate.min.js"></script>
+    <script src="//code.angularjs.org/1.5.0-rc.1/angular-messages.min.js"></script>
+    <script src="bower_components/angular-smart-table/dist/smart-table.min.js"></script>
+    <script src="bower_components/ngprogress/build/ngprogress.min.js"></script>
+    <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+    <script src="app.js"></script>
+    <script src="services.js"></script>
+    <script src="controllers.js"></script>
+    <script src="directives.js"></script>
+</head>
+<body>
+<div ng-controller="mainController">
+
+    <button type="button" ng-click="addModal()" class="btn btn-sm btn-success">
+        <i class="glyphicon glyphicon-plus"></i> Add blueprint
+    </button>
+
+    <button type="button" ng-click="compileBlueprints()" class="btn btn-sm btn-info">
+        <i class="glyphicon glyphicon-cog"></i> Compile blueprints
+    </button>
+
+    <table st-table="displayedBlueprintsInformationResult" st-safe-src="blueprintsInformationResult"
+           class="table table-striped">
+        <thead>
+        <tr>
+            <th st-sort="blueprintName">blueprint name</th>
+            <th st-sort="serviceName">service name</th>
+            <th st-sort="serviceNumber">service number</th>
+            <th st-sort="startAt">start at</th>
+            <th st-sort="parameters">parameters</th>
+            <th st-sort="properties">properties</th>
+        </tr>
+        <tr>
+            <th colspan="7"><input st-search="" class="form-control" placeholder="global search ..." type="text"/></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="row in displayedBlueprintsInformationResult">
+            <td>{{row.blueprintName}}</td>
+            <td>{{row.serviceName}}</td>
+            <td>{{row.serviceNumber}}</td>
+            <td>{{row.startAt}}</td>
+            <td>{{row.parameters}}</td>
+            <td>{{row.properties}}</td>
+            <td>
+                <button type="button" ng-click="linkModal(row.blueprintName)" class="btn btn-sm btn-success">
+                    <i class="glyphicon glyphicon-link">
+                    </i>
+                </button>
+                <button type="button" ng-click="updateModal(row.blueprintName)" class="btn btn-sm btn-info">
+                    <i class="glyphicon glyphicon-edit">
+                    </i>
+                </button>
+                <button type="button" ng-click="deleteModal(row.blueprintName)" class="btn btn-sm btn-danger">
+                    <i class="glyphicon glyphicon-remove">
+                    </i>
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

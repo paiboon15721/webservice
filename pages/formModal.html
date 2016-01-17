@@ -1,0 +1,61 @@
+<div ng-cloak>
+    <div class="modal-header">
+        <h3 class="modal-title">{{ action }} blueprint</h3>
+    </div>
+    <form name="blueprintForm" ng-submit="submit()">
+        <div class="modal-body">
+            <div class="form-group"
+                 ng-Class="{ 'has-error': blueprintForm.blueprintName.$invalid && blueprintForm.blueprintName.$touched,'has-success': blueprintForm.blueprintName.$valid }">
+                <label class="control-label" for="blueprintName">Blueprint name</label>
+                <input id="blueprintName" name="blueprintName" class="form-control"
+                       ng-model="blueprintName" required>
+
+                <div ng-messages="blueprintForm.blueprintName.$error" ng-if=" blueprintForm.blueprintName.$touched">
+                    <p ng-message="required" class="help-block">Blueprint name is required.</p>
+                </div>
+            </div>
+            <div class="form-group"
+                 ng-Class="{ 'has-error': blueprintForm.serviceName.$invalid && blueprintForm.serviceName.$touched,'has-success': blueprintForm.serviceName.$valid }">
+                <label class="control-label" for="serviceName">Service name</label>
+                <input id="serviceName" name="serviceName" class="form-control" ng-model="serviceName" required>
+
+                <div ng-messages="blueprintForm.serviceName.$error" ng-if=" blueprintForm.serviceName.$touched">
+                    <p ng-message="required" class="help-block">Service name is required.</p>
+                </div>
+            </div>
+            <div class="form-group"
+                 ng-Class="{ 'has-error': blueprintForm.serviceNumber.$invalid && blueprintForm.serviceNumber.$touched,'has-success': blueprintForm.serviceNumber.$valid }">
+                <label class="control-label" for="serviceNumber">Service number</label>
+                <input valid-number id="serviceNumber" name="serviceNumber" class="form-control"
+                       ng-model="serviceNumber" required>
+
+                <div ng-messages="blueprintForm.serviceNumber.$error" ng-if=" blueprintForm.serviceNumber.$touched">
+                    <p ng-message="required" class="help-block">Service Number is required.</p>
+                </div>
+            </div>
+            <div class="form-group"
+                 ng-Class="{ 'has-error': blueprintForm.startAt.$invalid && blueprintForm.startAt.$touched,'has-success': blueprintForm.startAt.$valid }">
+                <label class="control-label" for="startAt">Start at</label>
+                <input type="number" id="startAt" name="startAt" class="form-control" ng-model="startAt" required>
+
+                <div ng-messages="blueprintForm.startAt.$error" ng-if=" blueprintForm.startAt.$touched">
+                    <p ng-message="required" class="help-block">Start at is required.</p>
+                </div>
+            </div>
+            <div class="form-group"
+                 ng-Class="{ 'has-error': blueprintForm.parameters.$invalid && blueprintForm.parameters.$touched,'has-success': blueprintForm.parameters.$valid }">
+                <label class="control-label" for="parameters">Parameters</label>
+                <input id="parameters" name="parameters" class="form-control" ng-model="parameters" ng-list>
+            </div>
+            <div class="form-group"
+                 ng-Class="{ 'has-error': blueprintForm.properties.$invalid && blueprintForm.properties.$touched,'has-success': blueprintForm.properties.$valid }">
+                <label class="control-label" for="properties">Properties</label>
+                <input id="properties" name="properties" class="form-control" ng-model="properties" ng-list>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="submit">Submit</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+    </form>
+</div>
