@@ -27,7 +27,7 @@ webserviceApp.controller('mainController',
             };
 
             $scope.testServiceModal = function (blueprintName) {
-                var testServiceModalInstance = $uibModal
+                $uibModal
                     .open({
                         animation: true,
                         templateUrl: 'pages/testServiceModal.html',
@@ -39,23 +39,6 @@ webserviceApp.controller('mainController',
                         }
                     }
                 );
-
-                testServiceModalInstance.result
-                    .then(function (blueprintName) {
-                        window.open(
-                            'services/get' + blueprintName + '.php',
-                            '_blank'
-                        );
-                    }
-                );
-
-
-                /*
-                 window.open(
-                 'services/get' + blueprintName + '.php',
-                 '_blank'
-                 );
-                 */
             };
 
             $scope.deleteModal = function (blueprintName) {
@@ -132,8 +115,8 @@ webserviceApp.controller('mainController',
 );
 
 webserviceApp.controller('testServiceModalController',
-    ['$scope', '$uibModal', '$uibModalInstance', '$httpParamSerializer', '$location', 'blueprintName', 'blueprintsService',
-        function ($scope, $uibModal, $uibModalInstance, $httpParamSerializer, $location, blueprintName, blueprintsService) {
+    ['$scope', '$uibModal', '$uibModalInstance', '$httpParamSerializer', '$location', 'ngProgressFactory', 'blueprintName', 'blueprintsService',
+        function ($scope, $uibModal, $uibModalInstance, $httpParamSerializer, $location, ngProgressFactory, blueprintName, blueprintsService) {
             $scope.blueprintName = blueprintName;
             $scope.parametersValue = {};
 
@@ -154,7 +137,8 @@ webserviceApp.controller('testServiceModalController',
 
 
             $scope.jsonModal = function () {
-
+                $scope.progressbar = ngProgressFactory.createInstance();
+                $scope.progressbar.start();
                 blueprintsService.getTestService($scope.blueprintName, $scope.parametersValue)
                     .then(function (response) {
                         $uibModal.open({
@@ -163,6 +147,7 @@ webserviceApp.controller('testServiceModalController',
                                 controller: 'jsonModalController',
                                 resolve: {
                                     responseData: function () {
+                                        $scope.progressbar.complete();
                                         return response;
                                     }
                                 }
