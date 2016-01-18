@@ -26,11 +26,36 @@ webserviceApp.controller('mainController',
                 );
             };
 
-            $scope.linkModal = function (blueprintName) {
-                window.open(
-                    'services/get' + blueprintName + '.php',
-                    '_blank'
+            $scope.testServiceModal = function (blueprintName) {
+                var testServiceModalInstance = $uibModal
+                    .open({
+                        animation: true,
+                        templateUrl: 'pages/testServiceModal.html',
+                        controller: 'testServiceModalController',
+                        resolve: {
+                            blueprintName: function () {
+                                return blueprintName;
+                            }
+                        }
+                    }
                 );
+
+                testServiceModalInstance.result
+                    .then(function (blueprintName) {
+                        window.open(
+                            'services/get' + blueprintName + '.php',
+                            '_blank'
+                        );
+                    }
+                );
+
+
+                /*
+                 window.open(
+                 'services/get' + blueprintName + '.php',
+                 '_blank'
+                 );
+                 */
             };
 
             $scope.deleteModal = function (blueprintName) {
@@ -106,12 +131,73 @@ webserviceApp.controller('mainController',
     ]
 );
 
+webserviceApp.controller('testServiceModalController',
+    ['$scope', '$uibModal', '$uibModalInstance', '$httpParamSerializer', 'blueprintName', 'blueprintsService',
+        function ($scope, $uibModal, $uibModalInstance, $httpParamSerializer, blueprintName, blueprintsService) {
+            $scope.blueprintName = blueprintName;
+            $scope.parametersValue = {};
+
+            $scope.$watch('parametersValue', function () {
+                if (angular.equals({}, $scope.parametersValue) == false) {
+                    $scope.url = "services/get" + $scope.blueprintName + ".php?" + $httpParamSerializer($scope.parametersValue);
+                } else {
+                    $scope.url = "services/get" + $scope.blueprintName + ".php";
+                }
+
+            }, true);
+
+            blueprintsService.find(blueprintName)
+                .then(function (response) {
+                    $scope.parameters = response.parameters;
+                }
+            );
+
+
+            $scope.jsonModal = function () {
+
+                blueprintsService.getTestService($scope.blueprintName, $scope.parametersValue)
+                    .then(function (response) {
+                        $uibModal.open({
+                                animation: true,
+                                templateUrl: 'pages/jsonModal.html',
+                                controller: 'jsonModalController',
+                                resolve: {
+                                    responseData: function () {
+                                        return response;
+                                    }
+                                }
+                            }
+                        );
+                    }
+                );
+            };
+
+            $scope.cancel = function () {
+                $uibModalInstance.dismiss();
+            };
+        }
+    ]
+);
+
+webserviceApp.controller('jsonModalController',
+    ['$scope', '$uibModalInstance', 'responseData',
+        function ($scope, $uibModalInstance, responseData) {
+            $scope.responseData = responseData;
+
+            $scope.ok = function () {
+                $uibModalInstance.dismiss();
+            };
+        }
+    ]
+);
+
 webserviceApp.controller('deleteModalController',
     ['$scope', '$uibModalInstance', 'blueprintName',
         function ($scope, $uibModalInstance, blueprintName) {
             $scope.blueprintName = blueprintName;
-            $scope.ok = function (blueprintName) {
-                $uibModalInstance.close(blueprintName);
+
+            $scope.ok = function () {
+                $uibModalInstance.close($scope.blueprintName);
             };
 
             $scope.cancel = function () {

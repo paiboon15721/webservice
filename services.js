@@ -8,6 +8,17 @@ webserviceApp.service('blueprintsService',
             this.parameters = "";
             this.properties = "";
 
+            this.getTestService = function(blueprintName, parameters) {
+                return $http.get("services/get" + blueprintName + ".php", {
+                        params: parameters
+                    }
+                )
+                    .then(function (response) {
+                        return response.data;
+                    }
+                );
+            };
+
             this.getAll = function () {
                 return $http.get("internal_services/getBlueprintsAll.php")
                     .then(function (response) {

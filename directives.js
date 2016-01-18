@@ -8,7 +8,7 @@ webserviceApp.directive('validNumber', function () {
 
             ngModelCtrl.$parsers.push(function (val) {
                 if (angular.isUndefined(val)) {
-                    var val = '';
+                    val = '';
                 }
                 var clean = val.replace(/[^0-9]+/g, '');
                 if (val !== clean) {
