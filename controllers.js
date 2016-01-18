@@ -132,16 +132,16 @@ webserviceApp.controller('mainController',
 );
 
 webserviceApp.controller('testServiceModalController',
-    ['$scope', '$uibModal', '$uibModalInstance', '$httpParamSerializer', 'blueprintName', 'blueprintsService',
-        function ($scope, $uibModal, $uibModalInstance, $httpParamSerializer, blueprintName, blueprintsService) {
+    ['$scope', '$uibModal', '$uibModalInstance', '$httpParamSerializer', '$location', 'blueprintName', 'blueprintsService',
+        function ($scope, $uibModal, $uibModalInstance, $httpParamSerializer, $location, blueprintName, blueprintsService) {
             $scope.blueprintName = blueprintName;
             $scope.parametersValue = {};
 
             $scope.$watch('parametersValue', function () {
                 if (angular.equals({}, $scope.parametersValue) == false) {
-                    $scope.url = "services/get" + $scope.blueprintName + ".php?" + $httpParamSerializer($scope.parametersValue);
+                    $scope.url = $location.host() + "/webservice/services/get" + $scope.blueprintName + ".php?" + $httpParamSerializer($scope.parametersValue);
                 } else {
-                    $scope.url = "services/get" + $scope.blueprintName + ".php";
+                    $scope.url = $location.host() + "/webservice/services/get" + $scope.blueprintName + ".php";
                 }
 
             }, true);
