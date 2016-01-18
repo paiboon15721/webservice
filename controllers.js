@@ -139,9 +139,9 @@ webserviceApp.controller('testServiceModalController',
 
             $scope.$watch('parametersValue', function () {
                 if (angular.equals({}, $scope.parametersValue) == false) {
-                    $scope.url = $location.host() + "/webservice/services/get" + $scope.blueprintName + ".php?" + $httpParamSerializer($scope.parametersValue);
+                    $scope.url = $location.absUrl() + "services/get" + $scope.blueprintName + ".php?" + $httpParamSerializer($scope.parametersValue);
                 } else {
-                    $scope.url = $location.host() + "/webservice/services/get" + $scope.blueprintName + ".php";
+                    $scope.url = $location.absUrl() + "services/get" + $scope.blueprintName + ".php";
                 }
 
             }, true);
