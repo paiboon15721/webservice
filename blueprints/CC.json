@@ -1,13 +1,1 @@
-{
-  "serviceName": "tabst",
-  "serviceNumber": "1300",
-  "startAt": "2",
-  "parameters": [
-    "description",
-    "flagAll"
-  ],
-  "properties": [
-    "id",
-    "name"
-  ]
-}
+{"serviceName":"tabst","serviceNumber":"1300","startAt":"2","parameters":["description","flagAll"],"properties":["id","name"]}

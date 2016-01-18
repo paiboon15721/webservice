@@ -60,6 +60,7 @@ webserviceApp.controller('mainController',
                         blueprintsService.delete(blueprintName)
                             .then(function (response) {
                                 $scope.blueprintsInformationResult = response;
+                                $scope.compileBlueprints();
                             }
                         );
                     }
@@ -80,6 +81,7 @@ webserviceApp.controller('mainController',
                         blueprintsService.insert()
                             .then(function (response) {
                                 $scope.blueprintsInformationResult = response;
+                                $scope.compileBlueprints();
                             }
                         );
                     }
@@ -105,6 +107,7 @@ webserviceApp.controller('mainController',
                         blueprintsService.update()
                             .then(function (response) {
                                 $scope.blueprintsInformationResult = response;
+                                $scope.compileBlueprints();
                             }
                         );
                     }
