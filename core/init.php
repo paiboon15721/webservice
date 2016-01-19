@@ -5,8 +5,8 @@ error_reporting(E_ALL);
 header('Content-Type: text/html; charset=utf-8');
 $GLOBALS['config'] = array(
     'web_service' => array(
-        //'url' => 'http://ews.dopa.go.th:8080/wsdl',
-        'url' => 'http://172.16.224.205:8080/wsdl',
+        'url' => 'http://ews.dopa.go.th:8080/wsdl',
+        //'url' => 'http://172.16.224.205:8080/wsdl',
         'b_service_name' => 'bdpa_wsreqlicWS',
         'encoding' => 'UTF-8',
     )

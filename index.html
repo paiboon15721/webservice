@@ -49,8 +49,8 @@
             <td>{{row.serviceName}}</td>
             <td>{{row.serviceNumber}}</td>
             <td>{{row.startAt}}</td>
-            <td>{{row.parameters}}</td>
-            <td>{{row.properties}}</td>
+            <td>{{row.parameters | limitTo:5}}</td>
+            <td>{{row.properties | limitTo:5}}</td>
             <td>
                 <button type="button" ng-click="testServiceModal(row.blueprintName)" class="btn btn-sm btn-success">
                     <i class="glyphicon glyphicon-link">
