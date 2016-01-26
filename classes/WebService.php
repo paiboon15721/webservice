@@ -43,24 +43,32 @@ final class WebService
         $responseOutput = $soapClient->__soapCall($bServiceName,
             array($bServiceName => $requestInput)
         );
-        return $responseOutput->outbuf;
+        $responseString = $responseOutput->outbuf;
+        if (substr($responseString, -1) == '|') {
+            $responseString = substr($responseString, 0, -1);
+        }
+        return $responseString;
     }
 
-    public static function getObject(array $configurations)
+    private static function produceSendMessage($parameters)
     {
-        $parameters = $configurations['parameters'];
         $sendMessage = '';
         foreach ($parameters as $parameter) {
             $sendMessage .= $parameter . '|';
         }
+        return $sendMessage;
+    }
+
+    public static function getObject(array $configurations)
+    {
         $responseString = WebService::send(
             $configurations['serviceName'],
             $configurations['serviceNumber'],
-            $sendMessage
+            WebService::produceSendMessage($configurations['parameters'])
         );
         $responseArray = explode('|', $responseString);
         $vars = array_keys(get_class_vars($configurations['class']));
-        $recordAmount = (count($responseArray) - ($configurations['startAt'] + 1)) / count($vars);
+        $recordAmount = (count($responseArray) - ($configurations['startAt'])) / count($vars);
         $JSONObject = new JSONObject();
         $i = $configurations['startAt'];
         for ($j = 1; $j <= $recordAmount; $j++) {

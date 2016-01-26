@@ -45,12 +45,14 @@
             <div class="form-group"
                  ng-Class="{ 'has-error': blueprintForm.parameters.$invalid && blueprintForm.parameters.$touched,'has-success': blueprintForm.parameters.$valid }">
                 <label class="control-label" for="parameters">Parameters</label>
-                <input id="parameters" name="parameters" class="form-control" ng-model="parameters" ng-list>
+                <textarea id="parameters" name="parameters" class="form-control" ng-model="parameters" rows="2"
+                          ng-list></textarea>
             </div>
             <div class="form-group"
                  ng-Class="{ 'has-error': blueprintForm.properties.$invalid && blueprintForm.properties.$touched,'has-success': blueprintForm.properties.$valid }">
                 <label class="control-label" for="properties">Properties</label>
-                <input id="properties" name="properties" class="form-control" ng-model="properties" ng-list>
+                <textarea id="properties" name="properties" class="form-control" ng-model="properties" rows="2"
+                          ng-list></textarea>
             </div>
         </div>
         <div class="modal-footer">
