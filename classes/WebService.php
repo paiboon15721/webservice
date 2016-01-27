@@ -50,11 +50,17 @@ final class WebService
         return $responseString;
     }
 
-    private static function produceSendMessage($parameters)
+    public static function produceSendMessage($parameters)
     {
         $sendMessage = '';
         foreach ($parameters as $parameter) {
-            $sendMessage .= $parameter . '|';
+            if (is_array($parameter)) {
+                foreach ($parameter as $inParameter) {
+                    $sendMessage .= $inParameter . '|';
+                }
+            } else {
+                $sendMessage .= $parameter . '|';
+            }
         }
         return $sendMessage;
     }

@@ -111,7 +111,7 @@ class Blueprints
     {
         $blueprintPath = Blueprints::$path . '/' . $blueprintName . '.json';
         if (is_file($blueprintPath)) {
-            $blueprintContent = json_decode(file_get_contents($blueprintPath));
+            $blueprintContent = json_decode(file_get_contents($blueprintPath), true);
             $blueprint = new Blueprints();
             $blueprint->setBlueprintName($blueprintName);
             $blueprint->setServiceName($blueprintContent->serviceName);

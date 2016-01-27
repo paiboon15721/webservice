@@ -32,6 +32,7 @@
            class="table table-striped">
         <thead>
         <tr>
+            <th>Action</th>
             <th st-sort="blueprintName">blueprint name</th>
             <th st-sort="serviceName">service name</th>
             <th st-sort="serviceNumber">service number</th>
@@ -45,26 +46,26 @@
         </thead>
         <tbody>
         <tr ng-repeat="row in displayedBlueprintsInformationResult">
-            <td>{{row.blueprintName}}</td>
-            <td>{{row.serviceName}}</td>
-            <td>{{row.serviceNumber}}</td>
-            <td>{{row.startAt}}</td>
-            <td>{{row.parameters | limitTo:5}}</td>
-            <td>{{row.properties | limitTo:5}}</td>
             <td>
-                <button type="button" ng-click="testServiceModal(row.blueprintName)" class="btn btn-sm btn-success">
-                    <i class="glyphicon glyphicon-link">
+                <button type="button" ng-click="deleteModal(row.blueprintName)" class="btn btn-sm btn-danger">
+                    <i class="glyphicon glyphicon-remove">
                     </i>
                 </button>
                 <button type="button" ng-click="updateModal(row.blueprintName)" class="btn btn-sm btn-info">
                     <i class="glyphicon glyphicon-edit">
                     </i>
                 </button>
-                <button type="button" ng-click="deleteModal(row.blueprintName)" class="btn btn-sm btn-danger">
-                    <i class="glyphicon glyphicon-remove">
+                <button type="button" ng-click="testServiceModal(row.blueprintName)" class="btn btn-sm btn-success">
+                    <i class="glyphicon glyphicon-link">
                     </i>
                 </button>
             </td>
+            <td>{{row.blueprintName}}</td>
+            <td>{{row.serviceName}}</td>
+            <td>{{row.serviceNumber}}</td>
+            <td>{{row.startAt}}</td>
+            <td>{{row.parameters | limitTo:5}}</td>
+            <td>{{row.properties | limitTo:5}}</td>
         </tr>
         </tbody>
     </table>
