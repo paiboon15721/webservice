@@ -10,7 +10,8 @@ class JSONObject
         return JSONObject::encode($this->items);
     }
 
-    public static function encode($array) {
+    public static function encode($array)
+    {
         $encoded = json_encode($array);
         $unescaped = preg_replace_callback('/\\\\u(\w{4})/', function ($matches) {
             return html_entity_decode('&#x' . $matches[1] . ';', ENT_COMPAT, 'UTF-8');
@@ -26,5 +27,15 @@ class JSONObject
     public function add($object)
     {
         array_push($this->items, $object);
+    }
+
+    public function hasError()
+    {
+        return isset($this->items['errorMessage']);
+    }
+
+    public function getErrorMessage()
+    {
+        return $this->items['errorMessage'];
     }
 }

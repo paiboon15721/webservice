@@ -1,0 +1,1 @@
+{"serviceName":"imgmgt","serviceNumber":"4001","returnDataStartAt":"2","parameters":["docReg","docRegSub","docType","docTypeSub","indexOrd1","indexOrd2","indexOrd3","indexOrd4","indexOrd5"],"properties":["page","fileId","imgSource","imgDesc","imgType","imgTypeDesc","recStatus","pid","docPlace","docDate","imgDate","imgTime"],"description":"ดึง url รูปตรายางมาแสดงใน report"}

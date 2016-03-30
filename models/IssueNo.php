@@ -3,7 +3,6 @@
 class IssueNo
 {
    public $issueNo;
-   public $seq;
 
    public static function get(array $parameters)
    {
@@ -11,7 +10,7 @@ class IssueNo
            array(
              'serviceName' => 'pawn',
              'serviceNumber' => '3102',
-             'startAt' => '1',
+             'returnDataStartAt' => '1',
              'parameters' => $parameters,
              'class' => __CLASS__,
             )

@@ -1,1 +1,13 @@
-{"serviceName":"tabst","serviceNumber":"1004","startAt":"2","parameters":["flagOrder"],"properties":["natCode","natDesc"]}
+{
+  "serviceName": "tabst",
+  "serviceNumber": "1004",
+  "returnDataStartAt": "2",
+  "parameters": [
+    "flagOrder"
+  ],
+  "properties": [
+    "natCode",
+    "natDesc"
+  ],
+  "description": ""
+}

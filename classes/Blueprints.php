@@ -7,9 +7,26 @@ class Blueprints
     private $blueprintName;
     private $serviceName;
     private $serviceNumber;
-    private $startAt;
+    private $returnDataStartAt;
     private $parameters;
     private $properties;
+    private $description;
+
+    /**
+     * @return mixed
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param mixed $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
 
     /**
      * @return mixed
@@ -62,17 +79,17 @@ class Blueprints
     /**
      * @return mixed
      */
-    public function getStartAt()
+    public function getReturnDataStartAt()
     {
-        return $this->startAt;
+        return $this->returnDataStartAt;
     }
 
     /**
-     * @param mixed $startAt
+     * @param mixed $returnDataStartAt
      */
-    public function setStartAt($startAt)
+    public function setReturnDataStartAt($returnDataStartAt)
     {
-        $this->startAt = $startAt;
+        $this->returnDataStartAt = $returnDataStartAt;
     }
 
     /**
@@ -111,14 +128,15 @@ class Blueprints
     {
         $blueprintPath = Blueprints::$path . '/' . $blueprintName . '.json';
         if (is_file($blueprintPath)) {
-            $blueprintContent = json_decode(file_get_contents($blueprintPath), true);
+            $blueprintContent = json_decode(file_get_contents($blueprintPath));
             $blueprint = new Blueprints();
             $blueprint->setBlueprintName($blueprintName);
             $blueprint->setServiceName($blueprintContent->serviceName);
             $blueprint->setServiceNumber($blueprintContent->serviceNumber);
             $blueprint->setParameters($blueprintContent->parameters);
-            $blueprint->setStartAt($blueprintContent->startAt);
+            $blueprint->setReturnDataStartAt($blueprintContent->returnDataStartAt);
             $blueprint->setProperties($blueprintContent->properties);
+            $blueprint->setDescription($blueprintContent->description);
             return $blueprint;
         }
         return false;
@@ -218,7 +236,7 @@ class Blueprints
                 . '           array(' . "\n"
                 . "             'serviceName' => '" . $blueprint->serviceName . "'," . "\n"
                 . "             'serviceNumber' => '" . $blueprint->serviceNumber . "'," . "\n"
-                . "             'startAt' => '" . $blueprint->startAt . "'," . "\n"
+                . "             'returnDataStartAt' => '" . $blueprint->returnDataStartAt . "'," . "\n"
                 . "             'parameters' => " . '$parameters,' . "\n"
                 . "             'class' => " . '__CLASS__,' . "\n"
                 . '            )' . "\n"
@@ -245,6 +263,24 @@ class Blueprints
             fclose($myfile);
         }
         return true;
+    }
+
+    public static function deployServices()
+    {
+        /*
+        $sftp = new Net_SFTP('172.16.224.205');
+        if (!$sftp->login('tuxedo', 'tuxedo')) {
+            exit('Login Failed');
+        }
+        */
+        /*
+        $ftp_server = 'ssh2.sftp://172.16.224.205';
+        $ftp_username = 'tuxedo';
+        $ftp_userpass = 'tuxedo';
+        $ftp_conn = ftp_connect($ftp_server) or die("Could not connect to $ftp_server");
+        $login = ftp_login($ftp_conn, $ftp_username, $ftp_userpass);
+        return true;
+        */
     }
 
     public function getJSON()

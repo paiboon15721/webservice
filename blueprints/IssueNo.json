@@ -1,1 +1,1 @@
-{"serviceName":"pawn","serviceNumber":"3102","startAt":"1","parameters":["licRcode","licId"],"properties":["issueNo","seq"]}
+{"serviceName":"pawn","serviceNumber":"3102","returnDataStartAt":"1","parameters":["licRcode","licId"],"properties":["issueNo"],"description":""}

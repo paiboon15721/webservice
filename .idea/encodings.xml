@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/classes/Blueprints.php" charset="TIS-620" />
+    <file url="file://$PROJECT_DIR$/classes/Config.php" charset="TIS-620" />
+    <file url="file://$PROJECT_DIR$/classes/ConvertDateTime.php" charset="TIS-620" />
+    <file url="file://$PROJECT_DIR$/classes/ImportPawnTicket.php" charset="TIS-620" />
+    <file url="file://$PROJECT_DIR$/classes/Input.php" charset="TIS-620" />
     <file url="file://$PROJECT_DIR$/classes/JSONObject.php" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/classes/WebService.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/classes/WebService.php" charset="TIS-620" />
     <file url="file://$PROJECT_DIR$/controllers.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/core/init.php" charset="TIS-620" />
     <file url="file://$PROJECT_DIR$/internal_services/compileBlueprints.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/internal_services/deployServices.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/internal_services/getBlueprint.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/internal_services/getBlueprintsAll.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/pages/templates/pagination.html" charset="TIS-620" />
+    <file url="file://$PROJECT_DIR$/pages/testServiceModal.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/repeatServices/getImportPawnTicket.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/services/getIssueNo.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/services/getPawnTicket.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/services/getTitleDesc.php" charset="UTF-8" />
   </component>
 </project>

@@ -1,0 +1,26 @@
+{
+  "serviceName": "pawn",
+  "serviceNumber": "5400",
+  "returnDataStartAt": "2",
+  "parameters": [
+    "licRcode",
+    "licId"
+  ],
+  "properties": [
+    "docSeq",
+    "chkDate",
+    "chkTime",
+    "chkEmp",
+    "flag",
+    "bookName",
+    "police",
+    "pawnDocNo",
+    "pawnIssueNo",
+    "updDate",
+    "updTime",
+    "updEmp",
+    "docNo",
+    "docDate"
+  ],
+  "description": ""
+}

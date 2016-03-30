@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="webserviceApp">
 <head>
+    <style>
+        .select-page {
+            width: 50px;
+            text-align: center;
+        }
+
+        .pagination li a input {
+            padding: 0;
+            margin: -5px 0;
+        }
+    </style>
     <meta charset="UTF-8">
     <title>Blueprints Management</title>
     <link data-require="bootstrap-css@3.2.0" data-semver="3.2.0" rel="stylesheet"
@@ -21,11 +32,15 @@
 <div ng-controller="mainController">
 
     <button type="button" ng-click="addModal()" class="btn btn-sm btn-success">
-        <i class="glyphicon glyphicon-plus"></i> Add blueprint
+        <i class="glyphicon glyphicon-plus"></i> Add Blueprint
     </button>
 
     <button type="button" ng-click="compileBlueprints()" class="btn btn-sm btn-info">
-        <i class="glyphicon glyphicon-cog"></i> Compile blueprints
+        <i class="glyphicon glyphicon-cog"></i> Compile Blueprints
+    </button>
+
+    <button type="button" ng-click="deployServices()" class="btn btn-sm btn-warning">
+        <i class="glyphicon glyphicon-refresh"></i> Sync to Server
     </button>
 
     <table st-table="displayedBlueprintsInformationResult" st-safe-src="blueprintsInformationResult"
@@ -36,7 +51,7 @@
             <th st-sort="blueprintName">blueprint name</th>
             <th st-sort="serviceName">service name</th>
             <th st-sort="serviceNumber">service number</th>
-            <th st-sort="startAt">start at</th>
+            <th st-sort="returnDataStartAt">return data start at</th>
             <th st-sort="parameters">parameters</th>
             <th st-sort="properties">properties</th>
         </tr>
@@ -63,11 +78,18 @@
             <td>{{row.blueprintName}}</td>
             <td>{{row.serviceName}}</td>
             <td>{{row.serviceNumber}}</td>
-            <td>{{row.startAt}}</td>
+            <td>{{row.returnDataStartAt}}</td>
             <td>{{row.parameters | limitTo:5}}</td>
             <td>{{row.properties | limitTo:5}}</td>
         </tr>
         </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="7" class="text-center">
+                <div st-items-by-page="15" st-pagination="" st-template="pages/templates/pagination.html"></div>
+            </td>
+        </tr>
+        </tfoot>
     </table>
 </div>
 </body>

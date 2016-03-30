@@ -1,13 +1,1 @@
-{
-  "serviceName": "tabst",
-  "serviceNumber": "1301",
-  "startAt": "2",
-  "parameters": [
-    "cc",
-    "flagAll"
-  ],
-  "properties": [
-    "id",
-    "name"
-  ]
-}
+{"serviceName":"tabst","serviceNumber":"1301","returnDataStartAt":"2","parameters":["cc","flagAll"],"properties":["id","name"],"description":"ทดสอบ"}

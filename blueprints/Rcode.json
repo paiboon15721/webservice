@@ -1,1 +1,14 @@
-{"serviceName":"tabst","serviceNumber":"1015","startAt":"2","parameters":["rcode"],"properties":["soiCode","soiDesc1","soiDesc2"]}
+{
+  "serviceName": "tabst",
+  "serviceNumber": "1015",
+  "returnDataStartAt": "2",
+  "parameters": [
+    "rcode"
+  ],
+  "properties": [
+    "soiCode",
+    "soiDesc1",
+    "soiDesc2"
+  ],
+  "description": ""
+}

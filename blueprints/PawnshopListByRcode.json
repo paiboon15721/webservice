@@ -1,0 +1,14 @@
+{
+  "serviceName": "pawn",
+  "serviceNumber": "2500",
+  "returnDataStartAt": "2",
+  "parameters": [
+    "licRcode"
+  ],
+  "properties": [
+    "licId",
+    "siteName",
+    "siteId"
+  ],
+  "description": ""
+}

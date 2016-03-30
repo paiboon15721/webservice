@@ -1,8 +1,9 @@
 <?php
+ini_set('max_execution_time', 300);
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-header('Content-Type: text/html; charset=utf-8');
+header('Content-Type: text/html; charset=tis-620');
 $GLOBALS['config'] = array(
     'web_service' => array(
         'url' => 'http://ews.dopa.go.th:8080/wsdl',

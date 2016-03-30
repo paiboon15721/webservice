@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="webserviceApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Load Test</title>
+    <script type="text/javascript" language="javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var test = {
+                myFunction: function () {
+                    $.ajax(
+                            {
+                                type: "POST",
+                                dataType: "json",
+                                url: '../services/getPawnshopListByRcode.php',
+                                data: {
+                                    "licRcode": '0083'
+                                },
+                                success: function (response) {
+                                    console.log('success');
+                                    $('#response').append(JSON.stringify(response, null, 2));
+                                }
+                            });
+                },
+
+                aonFunction: function () {
+                    $.ajax(
+                            {
+                                type: "POST",
+                                dataType: "json",
+                                url: 'include/ajax_bug.php',
+                                data: {
+                                    "func": 'getBug',
+                                    "strSend": '1301|10|0|1',
+                                    "current": '0',
+                                    "restrict": '1'
+                                },
+                                success: function (response) {
+                                    var ans = response.ans;
+                                    console.log('success');
+                                    if ((typeof (ans) == "string")) {
+                                        alert("Can't connect service Try again later \n---------------------------------- \n" + ans + "\nLen : " + total);
+                                    }
+                                    $('#response').html(JSON.stringify(response, null, 2));
+                                }
+                            });
+                }
+
+            };
+
+            for (var i = 0; i < 1000; i++) {
+                test.aonFunction();
+                //test.myFunction();
+            }
+        });
+    </script>
+</head>
+<body>
+<pre id="response"></pre>
+</body>
+</html>

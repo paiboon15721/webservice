@@ -1,1 +1,8 @@
-{"serviceName":"tabst","serviceNumber":"1999","startAt":"2","parameters":[],"properties":[]}
+{
+  "serviceName": "tabst",
+  "serviceNumber": "1999",
+  "returnDataStartAt": "2",
+  "parameters": [],
+  "properties": [],
+  "description": ""
+}

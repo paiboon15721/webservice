@@ -1,1 +1,32 @@
-{"serviceName":"entertain","serviceNumber":"2056","startAt":"2","parameters":["licReg","pid"],"properties":["SITE_ID","SITE_NAME","PID","IDENTIFY_DOCTYPE","TITLE","TITLE_DESC","FNAME","MNAME","LNAME","SEX","REMARK","PASSWD","REGIS_DATE","REC_STATUS","DATE_STATUS","CANCEL_CODE","CANCEL_DATE","UPD_EMP","UPD_DATE","UPD_TIME"]}
+{
+  "serviceName": "entertain",
+  "serviceNumber": "2056",
+  "returnDataStartAt": "2",
+  "parameters": [
+    "licReg",
+    "pid"
+  ],
+  "properties": [
+    "SITE_ID",
+    "SITE_NAME",
+    "PID",
+    "IDENTIFY_DOCTYPE",
+    "TITLE",
+    "TITLE_DESC",
+    "FNAME",
+    "MNAME",
+    "LNAME",
+    "SEX",
+    "REMARK",
+    "PASSWD",
+    "REGIS_DATE",
+    "REC_STATUS",
+    "DATE_STATUS",
+    "CANCEL_CODE",
+    "CANCEL_DATE",
+    "UPD_EMP",
+    "UPD_DATE",
+    "UPD_TIME"
+  ],
+  "description": ""
+}

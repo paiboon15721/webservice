@@ -1,1 +1,13 @@
-{"serviceName":"tabst","serviceNumber":"1010","startAt":"2","parameters":[],"properties":["consuleCode","consuleTdesc","consuleCtry","ctryTdesc"]}
+{
+  "serviceName": "tabst",
+  "serviceNumber": "1010",
+  "returnDataStartAt": "2",
+  "parameters": [],
+  "properties": [
+    "consuleCode",
+    "consuleTdesc",
+    "consuleCtry",
+    "ctryTdesc"
+  ],
+  "description": ""
+}

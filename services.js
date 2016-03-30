@@ -4,9 +4,10 @@ webserviceApp.service('blueprintsService',
             this.blueprintName = "";
             this.serviceName = "";
             this.serviceNumber = "";
-            this.startAt = "";
+            this.returnDataStartAt = "";
             this.parameters = "";
             this.properties = "";
+            this.description = "";
 
             this.getTestService = function(blueprintName, parameters) {
                 return $http.get("services/get" + blueprintName + ".php", {
@@ -29,6 +30,14 @@ webserviceApp.service('blueprintsService',
 
             this.compile = function () {
                 return $http.get("internal_services/compileBlueprints.php")
+                    .then(function (response) {
+                        return response.data;
+                    }
+                );
+            };
+
+            this.deployServices = function () {
+                return $http.get("internal_services/deployServices.php")
                     .then(function (response) {
                         return response.data;
                     }
@@ -67,9 +76,10 @@ webserviceApp.service('blueprintsService',
                             blueprintName: this.blueprintName,
                             serviceName: this.serviceName,
                             serviceNumber: this.serviceNumber,
-                            startAt: this.startAt,
+                            returnDataStartAt: this.returnDataStartAt,
                             parameters: JSON.stringify(this.parameters),
-                            properties: JSON.stringify(this.properties)
+                            properties: JSON.stringify(this.properties),
+                            description: this.description
                         }
                     }
                 )
@@ -85,9 +95,10 @@ webserviceApp.service('blueprintsService',
                             blueprintName: this.blueprintName,
                             serviceName: this.serviceName,
                             serviceNumber: this.serviceNumber,
-                            startAt: this.startAt,
+                            returnDataStartAt: this.returnDataStartAt,
                             parameters: JSON.stringify(this.parameters),
-                            properties: JSON.stringify(this.properties)
+                            properties: JSON.stringify(this.properties),
+                            description: this.description
                         }
                     }
                 )

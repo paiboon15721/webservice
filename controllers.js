@@ -26,6 +26,19 @@ webserviceApp.controller('mainController',
                 );
             };
 
+            $scope.deployServices = function () {
+                $scope.progressbar.start();
+                blueprintsService.deployServices()
+                    .then(function (response) {
+                        if (response) {
+                            $scope.progressbar.complete();
+                        } else {
+                            $scope.progressbar.stop();
+                        }
+                    }
+                );
+            };
+
             $scope.testServiceModal = function (blueprintName) {
                 $uibModal
                     .open({
@@ -89,6 +102,7 @@ webserviceApp.controller('mainController',
             };
 
             $scope.updateModal = function (blueprintName) {
+
                 var updateModalInstance = $uibModal
                     .open({
                         animation: true,
@@ -102,6 +116,7 @@ webserviceApp.controller('mainController',
                     }
                 );
 
+
                 updateModalInstance.result
                     .then(function () {
                         blueprintsService.update()
@@ -112,14 +127,15 @@ webserviceApp.controller('mainController',
                         );
                     }
                 );
+
             };
         }
     ]
 );
 
 webserviceApp.controller('testServiceModalController',
-    ['$scope', '$uibModal', '$uibModalInstance', '$httpParamSerializer', '$location', 'ngProgressFactory', 'blueprintName', 'blueprintsService',
-        function ($scope, $uibModal, $uibModalInstance, $httpParamSerializer, $location, ngProgressFactory, blueprintName, blueprintsService) {
+    ['$http', '$scope', '$uibModal', '$uibModalInstance', '$httpParamSerializer', '$location', 'ngProgressFactory', 'blueprintName', 'blueprintsService',
+        function ($http, $scope, $uibModal, $uibModalInstance, $httpParamSerializer, $location, ngProgressFactory, blueprintName, blueprintsService) {
             $scope.blueprintName = blueprintName;
             $scope.parametersValue = {};
 
@@ -135,6 +151,7 @@ webserviceApp.controller('testServiceModalController',
             blueprintsService.find(blueprintName)
                 .then(function (response) {
                     $scope.parameters = response.parameters;
+                    $scope.description = response.description;
                 }
             );
 
@@ -142,6 +159,19 @@ webserviceApp.controller('testServiceModalController',
             $scope.jsonModal = function () {
                 $scope.progressbar = ngProgressFactory.createInstance();
                 $scope.progressbar.start();
+                /*
+                 for (var i = 0; i <= 10; i++) {
+                 $http.get("services/get" + $scope.blueprintName + ".php", {
+                 params: $scope.parametersValue
+                 }
+                 )
+                 .then(function (response) {
+                 console.log('success');
+                 console.log(response);
+                 }
+                 );
+                 }
+                 */
                 blueprintsService.getTestService($scope.blueprintName, $scope.parametersValue)
                     .then(function (response) {
                         $uibModal.open({
@@ -158,6 +188,7 @@ webserviceApp.controller('testServiceModalController',
                         );
                     }
                 );
+
             };
 
             $scope.cancel = function () {
@@ -198,7 +229,6 @@ webserviceApp.controller('deleteModalController',
 webserviceApp.controller('updateModalController',
     ['$scope', '$uibModalInstance', 'blueprintName', 'blueprintsService',
         function ($scope, $uibModalInstance, blueprintName, blueprintsService) {
-
             $scope.action = "Edit";
 
             blueprintsService.find(blueprintName)
@@ -206,29 +236,22 @@ webserviceApp.controller('updateModalController',
                     $scope.blueprintName = response.blueprintName;
                     $scope.serviceName = response.serviceName;
                     $scope.serviceNumber = response.serviceNumber;
-                    $scope.startAt = parseFloat(response.startAt);
+                    $scope.returnDataStartAt = parseFloat(response.returnDataStartAt);
                     $scope.parameters = response.parameters;
                     $scope.properties = response.properties;
+                    $scope.description = response.description;
                 }
             );
 
-            $scope.$watchGroup([
-                    'blueprintName',
-                    'serviceName',
-                    'serviceNumber',
-                    'startAt',
-                    'parameters',
-                    'properties'],
-                function () {
-                    blueprintsService.blueprintName = $scope.blueprintName;
-                    blueprintsService.serviceName = $scope.serviceName;
-                    blueprintsService.serviceNumber = $scope.serviceNumber;
-                    blueprintsService.startAt = $scope.startAt;
-                    blueprintsService.parameters = $scope.parameters;
-                    blueprintsService.properties = $scope.properties;
-                });
 
             $scope.submit = function () {
+                blueprintsService.blueprintName = $scope.blueprintName;
+                blueprintsService.serviceName = $scope.serviceName;
+                blueprintsService.serviceNumber = $scope.serviceNumber;
+                blueprintsService.returnDataStartAt = $scope.returnDataStartAt;
+                blueprintsService.parameters = $scope.parameters;
+                blueprintsService.properties = $scope.properties;
+                blueprintsService.description = $scope.description;
                 $uibModalInstance.close();
             };
 
@@ -248,23 +271,15 @@ webserviceApp.controller('addModalController',
             $scope.parameters = [];
             $scope.properties = [];
 
-            $scope.$watchGroup([
-                    'blueprintName',
-                    'serviceName',
-                    'serviceNumber',
-                    'startAt',
-                    'parameters',
-                    'properties'],
-                function () {
-                    blueprintsService.blueprintName = $scope.blueprintName;
-                    blueprintsService.serviceName = $scope.serviceName;
-                    blueprintsService.serviceNumber = $scope.serviceNumber;
-                    blueprintsService.startAt = $scope.startAt;
-                    blueprintsService.parameters = $scope.parameters;
-                    blueprintsService.properties = $scope.properties;
-                });
 
             $scope.submit = function () {
+                blueprintsService.blueprintName = $scope.blueprintName;
+                blueprintsService.serviceName = $scope.serviceName;
+                blueprintsService.serviceNumber = $scope.serviceNumber;
+                blueprintsService.returnDataStartAt = $scope.returnDataStartAt;
+                blueprintsService.parameters = $scope.parameters;
+                blueprintsService.properties = $scope.properties;
+                blueprintsService.description = $scope.description;
                 $uibModalInstance.close();
             };
 

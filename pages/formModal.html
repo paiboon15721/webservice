@@ -34,12 +34,12 @@
                 </div>
             </div>
             <div class="form-group"
-                 ng-Class="{ 'has-error': blueprintForm.startAt.$invalid && blueprintForm.startAt.$touched,'has-success': blueprintForm.startAt.$valid }">
-                <label class="control-label" for="startAt">Start at</label>
-                <input type="number" id="startAt" name="startAt" class="form-control" ng-model="startAt" required>
+                 ng-Class="{ 'has-error': blueprintForm.returnDataStartAt.$invalid && blueprintForm.returnDataStartAt.$touched,'has-success': blueprintForm.returnDataStartAt.$valid }">
+                <label class="control-label" for="returnDataStartAt">Return data start at</label>
+                <input type="number" id="returnDataStartAt" name="returnDataStartAt" class="form-control" ng-model="returnDataStartAt" required>
 
-                <div ng-messages="blueprintForm.startAt.$error" ng-if=" blueprintForm.startAt.$touched">
-                    <p ng-message="required" class="help-block">Start at is required.</p>
+                <div ng-messages="blueprintForm.returnDataStartAt.$error" ng-if=" blueprintForm.returnDataStartAt.$touched">
+                    <p ng-message="required" class="help-block">Return data start at is required.</p>
                 </div>
             </div>
             <div class="form-group"
@@ -53,6 +53,10 @@
                 <label class="control-label" for="properties">Properties</label>
                 <textarea id="properties" name="properties" class="form-control" ng-model="properties" rows="2"
                           ng-list></textarea>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="description">Description</label>
+                <textarea id="description" name="description" class="form-control" ng-model="description" rows="2"></textarea>
             </div>
         </div>
         <div class="modal-footer">

@@ -1,0 +1,16 @@
+<nav ng-if="pages.length >= 2">
+    <ul class="pagination">
+        <li><a ng-click="selectPage(1)">หน้าแรก</a>
+        </li>
+        <li><a ng-click="selectPage(currentPage - 1)">&lt;</a>
+        </li>
+        <li><a>
+            หน้า
+            <page-select></page-select>
+            จากทั้งหมด {{numPages}} หน้า</a>
+        </li>
+        <li><a ng-click="selectPage(currentPage + 1)">&gt;</a>
+        </li>
+        <li><a ng-click="selectPage(numPages)">หน้าสุดท้าย</a></li>
+    </ul>
+</nav>
